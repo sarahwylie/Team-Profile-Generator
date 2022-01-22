@@ -6,7 +6,6 @@ Build out your team and stay in touch with one page that all team members can us
 ## Table of Contents
 * [Usage](#usage)
 * [Installation](#installation)
-* [Sample Output](#output)
 * [Tests](#tests)
 * [Badges](#badges)
 * [Queries](#any-questions)
@@ -18,10 +17,7 @@ Reference this page anytime you need to reference important information about yo
 Clone this repo's code to your computer and pop open the file named 'index.js'. In your terminal, type 'node index' and follow the command prompts. Once you have completed all prompts, you can either prompt your terminal to run (type "npm start" into your terminal) and open localhost:3001 OR hop over to the "dist" folder and pop open your new HTML file (open in your default browser - Chrome recommended) to see your beautiful new Team Profile!
 
 See the video below to reference installation and output instructions:
-![Walkthrough](./utils/Walkthrough.mp4)
-
-## Output:
-![Screenshot](./utils/Screenshot.png)
+[![Walkthrough]({./utils/Screenshot.png})]({./utils/Walkthrough.mp4} "Walkthrough")
 
 ## Tests
 This application used Jest to test outcomes.
