@@ -21,7 +21,7 @@ See the video below to reference installation and output instructions:
 
 
 ## Output:
-![screenshot](/utils/Screenshot.jpg)
+![screenshot](./utils/Screenshot.png)
 
 ## Tests
 This application used Jest to test outcomes.
