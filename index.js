@@ -29,11 +29,9 @@ function buffet() {
                 type: 'input',
                 name: 'mgrid',
                 message: "What is the manager's ID number?",
-                validate: mgridInput => {
-                    if (pass) {
-                        if (validation.includes(mgridInput)) {
-                            return 'This ID is taken. Please enter a new ID.'
-                        }
+                validate: function (mgridInput) {
+                    if (mgridInput) {
+                        return true;
                     } else {
                         console.log("Please enter manager's ID number");
                         return false;
@@ -44,11 +42,12 @@ function buffet() {
                 type: 'input',
                 name: 'mgremail',
                 message: "Please enter the manager's email address.",
-                validate: emailInput => {
-                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value)) {
+                validate: function (emailInput) {
+                    console.info(emailInput)
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)) {
                         return true
                     } else {
-                        console.log("You have entered an invalid email address!")
+                        console.info("You have entered an invalid email address!")
                         return false
                     }
                 }
@@ -91,8 +90,10 @@ function buffet() {
                     case 'Intern':
                         addInt();
                         break
-                    default:
-                        buildIt();
+                    case 'I am finished entering my team':
+                        buildIt();    
+                    // default:
+                    //     buildIt();
                 }
             })
     }
@@ -115,10 +116,12 @@ function buffet() {
                 type: 'input',
                 name: 'engid',
                 message: "What is the engineer's ID number?",
-                validate: engidInput => {
-                    if (pass) {
+                validate: function (engidInput) {
+                    if (engidInput) {
                         if (validation.includes(engidInput)) {
                             return 'This ID is taken. Please enter a new ID.'
+                        } else {
+                            return true;
                         }
                     } else {
                         console.log("Please enter engineer's ID number");
@@ -130,8 +133,8 @@ function buffet() {
                 type: 'input',
                 name: 'mgremail',
                 message: "Please enter the engineer's email address.",
-                validate: emailInput => {
-                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value)) {
+                validate: function (emailInput) {
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)) {
                         return true
                     } else {
                         console.log("You have entered an invalid email address!")
@@ -179,10 +182,12 @@ function buffet() {
                 type: 'input',
                 name: 'intid',
                 message: "What is the intern's ID number?",
-                validate: intidInput => {
-                    if (pass) {
+                validate: function (intidInput) {
+                    if (intidInput) {
                         if (validation.includes(intidInput)) {
                             return 'This ID is taken. Please enter a new ID.'
+                        } else {
+                            return true;
                         }
                     } else {
                         console.log("Please enter intern's ID number");
@@ -194,8 +199,8 @@ function buffet() {
                 type: 'input',
                 name: 'intemail',
                 message: "Please enter the intern's email address.",
-                validate: emailInput => {
-                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.email.value)) {
+                validate: function (emailInput) {
+                    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)) {
                         return true
                     } else {
                         console.log("You have entered an invalid email address!")
@@ -225,74 +230,14 @@ function buffet() {
             })
     }
     function buildIt() {
-        fs.writeFile('./dist/index.html', pageTemplate(teamMembers), 'utf-8')
-   .catch(err => {
-       console.log(err)
-   })
-    }
+        fs.writeFile('./dist/index.html', pageTemplate(teamMembers), err => {
+        if (err) {
+            return console.log(err);
+        } 
+        console.log('wooooo')    
+    })}
     createMgr();
 }
 
 buffet();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const mgrPrompt = () => {
-//     return inquirer.prompt([
-//         {
-//             type: 'input',
-//             name: 'manager',
-//             message: 'What is the name of the team manager? (Required)',
-//             validate: managerInput => {
-//                 if (managerInput) {
-//                     return true;
-//                 } else {
-//                     console.log('Please enter your name!');
-//                     return false;
-//                 }
-//             }
-//         },
-//     ])
-// };
-
-// const engPrompt = () => {
-//     return inquirer.prompt([
-//         {
-//             type: 'list',
-//             name: 'engintern',
-//             message: 'Would you like to enter an engineer or an intern to continue building your team?',
-//             choices: ['Engineer', 'Intern', 'I am finished entering my team'],
-//         },
-//     ])
-// };
-
-// mgrPrompt()
-// .then(engPrompt)
-// .then (pageHTML => {
-//     return writeFile(pageHTML);
-// })
-//    .catch(err => {
-//        console.log(err)
-//    })
