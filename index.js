@@ -131,7 +131,7 @@ function buffet() {
             },
             {
                 type: 'input',
-                name: 'mgremail',
+                name: 'engemail',
                 message: "Please enter the engineer's email address.",
                 validate: function (emailInput) {
                     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailInput)) {
@@ -235,6 +235,10 @@ function buffet() {
             return console.log(err);
         } 
         console.log('wooooo')    
+        fs.copyFile('./src/style.css', './dist/style.css', err => {
+            if (err) {
+                return console.log(err);
+            }})
     })}
     createMgr();
 }

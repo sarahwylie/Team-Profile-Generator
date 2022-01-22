@@ -5,7 +5,7 @@ const createTeam = (team) => {
     const Manager = (manager) => {
         return `
             <div class="card col-12 col-md-6 mb-2 bg-secondary text-info p-3 flex-column font-weight-bold">
-                <h3 class="card-header text-light"><i class="fas fa-user-tie"></i>${manager.getRole()}</h3>
+                <h3 class="card-header text-light"><i class="fas fa-user-tie"></i>  ${manager.getRole()}</h3>
                     <div class="card-body">
                     <h4 class="card-title">${manager.name}</h4>
                     <ul class="list-group list-group-flush">
@@ -19,7 +19,7 @@ const createTeam = (team) => {
     const Engineer = (engineer) => {
         return `
             <div class="card col-12 col-md-6 mb-2 bg-secondary text-info p-3 flex-column font-weight-bold">
-                <h3 class="card-header text-light"><i class="fas fa-hard-hat"></i>${engineer.getRole()}</h3>
+                <h3 class="card-header text-light"><i class="fas fa-hard-hat"></i>  ${engineer.getRole()}</h3>
                     <div class="card-body">
                     <h4 class="card-title">${engineer.name}</h4>
                     <ul class="list-group list-group-flush">
@@ -33,7 +33,7 @@ const createTeam = (team) => {
     const Intern = (intern) => {
         return `
             <div class="card col-12 col-md-6 mb-2 bg-secondary text-info p-3 flex-column font-weight-bold">
-                <h3 class="card-header text-light"><i class="fas fa-user-graduate"></i>${intern.getRole()}</h3>
+                <h3 class="card-header text-light"><i class="fas fa-user-graduate"></i>  ${intern.getRole()}</h3>
                     <div class="card-body">
                     <h4 class="card-title">${intern.name}</h4>
                     <ul class="list-group list-group-flush">
@@ -54,7 +54,7 @@ const createTeam = (team) => {
 
 module.exports = pageHTML => {
     return `
-                < !DOCTYPE html >
+                <!DOCTYPE html>
                     <html lang="en">
                         <head>
                             <meta charset="UTF-8">
@@ -73,12 +73,14 @@ module.exports = pageHTML => {
                                                         </div>
                                                     </header>
                                                     <main class="container my-5">
+                                                    <div class="flex-row justify-space-between">
                                                         ${createTeam(pageHTML)}
+                                                    </div>
                                                     </div>
                                                 </section>
                                             </main>
                                             <footer class="container text-center py-3">
-                                                <h5 class="text-dark"><sup>&copy</sup>; ${new Date().getFullYear()} by Sarah Wylie Productions</h5>
+                                                <h5 class="text-dark"><sup>&copy</sup> ${new Date().getFullYear()} by Sarah Wylie Productions</h5>
                                             </footer>
                                         </body>
                                     </html>
